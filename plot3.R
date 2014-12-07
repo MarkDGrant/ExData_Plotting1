@@ -16,15 +16,15 @@ elect_df1 <- elect_df %>%
   mutate(Time, Time = hms(Time))
 
 # plot3 time vs energy submetering, and to save as png
+plot3 <- function() {
 with(elect_df1,  plot(Date + Time, Sub_metering_1, type="l", xlab="", ylab="Energy sub metering"))
 with(elect_df1, lines(Date + Time, Sub_metering_2, col = "red"))
 with(elect_df1, lines(Date + Time, Sub_metering_3, col = "blue"))
-legend("topright", lwd = 1, col=c("black", "red", "blue"), c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+legend("topright", lwd = 1, col=c("black", "red", "blue"), c("Sub_metering_1","Sub_metering_2","Sub_metering_3")) }
+
+plot3()
 
 png("plot3.png", width=480, height=480)
-with(elect_df1,  plot(Date + Time, Sub_metering_1, type="l", xlab="", ylab="Energy sub metering"))
-with(elect_df1, lines(Date + Time, Sub_metering_2, col = "red"))
-with(elect_df1, lines(Date + Time, Sub_metering_3, col = "blue"))
-legend("topright", lwd = 1, col=c("black", "red", "blue"), c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+plot3()
 dev.off()
 
