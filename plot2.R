@@ -16,6 +16,8 @@ elect_df1 <- elect_df %>%
   mutate(Time, Time = hms(Time))
 
 # plot2 time vs global active power histogram, and save as png; use default resolution
+with(elect_df1, plot(Date + Time, Global_active_power, xlab = "", ylab = "Global Active Power (kilowatts)", type="l"))
+
 png("plot2.png", width=480, height=480)
 with(elect_df1, plot(Date + Time, Global_active_power, xlab = "", ylab = "Global Active Power (kilowatts)", type="l"))
 dev.off()

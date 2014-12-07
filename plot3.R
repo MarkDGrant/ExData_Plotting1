@@ -15,7 +15,12 @@ elect_df1 <- elect_df %>%
   filter(Date %in% c(mdy("02-01-2007"), mdy("02-02-2007"))) %>%
   mutate(Time, Time = hms(Time))
 
-# plot3 time vs energy submetering
+# plot3 time vs energy submetering, and to save as png
+with(elect_df1,  plot(Date + Time, Sub_metering_1, type="l", xlab="", ylab="Energy sub metering"))
+with(elect_df1, lines(Date + Time, Sub_metering_2, col = "red"))
+with(elect_df1, lines(Date + Time, Sub_metering_3, col = "blue"))
+legend("topright", lwd = 1, col=c("black", "red", "blue"), c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+
 png("plot3.png", width=480, height=480)
 with(elect_df1,  plot(Date + Time, Sub_metering_1, type="l", xlab="", ylab="Energy sub metering"))
 with(elect_df1, lines(Date + Time, Sub_metering_2, col = "red"))
